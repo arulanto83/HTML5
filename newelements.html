@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML New Form Elements</title>
+</head>
+<body onload="setDefaultValues()">
+    <h2>Form</h2>
+    <form>
+        <fieldset>
+            <legend>Personal Details</legend>
+            <div>
+                <label>Name</label>
+                <input type="text" 
+                autofocus 
+                required 
+                pattern="^[a-zA-Z_ ]*$" name="" id="">
+            </div>
+            <br>
+            <div>
+                <label>DOB</label>
+                <input type="date" min="2019-05-06" id="todayDate" step="2">
+            </div>
+            <br>
+            <div>
+                <label for="">Age</label>
+                <input type="number" min="10" max="100" step="10">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Professional Details</legend>
+            <div>
+                <label>Email</label>
+                <input type="email">
+            </div>
+            <br>
+            <div>
+                <label for="">Website</label>
+                <input type="url">
+            </div>
+            <br>
+            <div>
+            <label>How was the session?</label>
+            <input type="range" min="0" max="10" step="5">
+            </div>
+            <br>
+            <div>
+            <input type="color" name="" id="">
+        </div>
+        <br>
+        <div>
+            <progress value="30" min="0" max="100"></progress>
+            <br>
+            <label>Select your Location:</label>
+            <br>
+            <input type="text" list="citynames">
+            <datalist id="citynames">
+                <option value="Chennai"></option>
+                <option value="Madurai"></option>
+                <option value="Mangalore"></option>
+                <option value="Bangalore"></option>
+                <option value="Mumbai"></option>
+            </datalist>
+        </div>
+        </fieldset>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        var setDefaultValues=function(){
+            //document.getElementById("todayDate").valueAsDate=new Date();
+            document.getElementById("todayDate").setAttribute("max", setDateFun())
+            var datetext=new Date().getDate()+5;
+            console.log(datetext);
+            document.getElementById("todayDate").max=new Date().toISOString().split("T")[0];
+        }
+        var setDateFun=function(){
+            return new Date().toString();
+        }
+    </script>
+</body>
+</html>

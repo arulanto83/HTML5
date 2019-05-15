@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/dragdrop.css">
+    <title>Drag and Drop</title>
+</head>
+<body>
+    <script>
+        var dragStarted=function(e){
+            console.log(e);
+        }
+        var imageDragged=function(e){
+            console.log("Dragging Logo...");
+            console.log(e.target.id);
+            e.dataTransfer.setData("imageid", e.target.id);
+        }
+        var preparingForDrop=function(e){
+            e.preventDefault();
+            console.log(e);
+        }
+        var dropImage=function(e){
+            var newImageId = e.dataTransfer.getData("imageid");
+            console.log("newImageId");
+            var tempLogo = document.getElementById(newImageId);
+            e.target.innerHTML="";
+            e.target.appendChild(tempLogo);
+        }
+        var dropImageLeft=function(e){
+            var newImageId = e.dataTransfer.getData("imageid");
+            console.log("newImageId");
+            var tempLogo = document.getElementById(newImageId);
+            e.target.innerHTML="";
+            e.target.appendChild(tempLogo);
+        }
+        var preparingForDropLeft=function(e){
+            e.preventDefault();
+            console.log(e);
+        }
+    </script>
+    <h1>Drag and Drop</h1>
+    <div id="left" ondragover="dragStarted(event); preparingForDropLeft(event)" ondrop="dropImageLeft(event)">
+        <a id="ctslogo" href="https://www.google.com" draggable="true" ondragstart="imageDragged(event)">
+        <img 
+        src="images/cognizant-logo.png" 
+        alt="" 
+        width="150" 
+        >
+        </a>
+    </div>
+    <div id="right" ondragover="preparingForDrop(event)" ondrop="dropImage(event)">
+        Image will be dropped here!!
+    </div>
+</body>
+</html>

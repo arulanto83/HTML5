@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>HTML5</title>
+    </head>
+<body>
+    <h1>Welcome to HTML5</h1>
+    <h3>Video</h3>
+
+    <video id="myvideo" width="400" controls>
+        <source src="SampleVideo_1280x720_5mb.mp4">
+        <source src="SampleVideo_1280x720_5mb.flv">
+        <source src="SampleVideo_176x144_5mb.3gp">
+    </video>
+<br>
+    <button id="playVideo" onclick="videoPlay()">Play</button>
+    <button id="pauseVideo" onclick="videoPause()" disabled="true">Pause</button>
+    <hr>
+    <h3>Youtube</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/3OkwCLakC_4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;" allowfullscreen></iframe>
+    <hr>
+    <h3>Audio</h3>
+    <audio width="400" controls autoplay>
+        <source src="file_example_MP3_5MG.mp3">
+    </audio>
+    <script>
+        var videoRef=document.getElementById("myvideo")
+        var videoPlay=function(){
+            console.log("Videoplay called")
+            videoRef.play()
+            playVideo.disabled=true;
+            pauseVideo.disabled=false;
+        }
+        var videoPause=function(){
+            console.log("Video Paused")
+            videoRef.pause()
+            playVideo.disabled=false;
+            pauseVideo.disabled=true;
+        }
+    </script>
+</body>
+</html>
